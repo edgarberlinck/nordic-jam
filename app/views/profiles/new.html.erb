@@ -1,9 +1,27 @@
 <%= form_with model: @profile do |form| %>
-<%= form.text_field :full_name, required: true, autofocus: true, autocomplete: "name", placeholder: "Enter your name" %>
-<%= form.text_field :address, required: true, autocomplete: "address", placeholder: "Enter your address" %>
-<%= form.text_field :city, required: true, autocomplete: "city", placeholder: "Enter your city" %>
-<%= form.text_field :state, required: true, autocomplete: "state", placeholder: "Enter your state" %>
-<%= form.text_field :zip, required: true, autocomplete: "zip_code", placeholder: "Enter your zip code" %>
-<%= form.rich_text_area :bio, required: true, placeholder: "Enter your bio" %>
+<div>
+  <%= form.label :full_name %>
+  <%= form.text_field :full_name, required: true, autofocus: true, autocomplete: "name", placeholder: "Enter your name" %>
+</div>
+<div>
+  <%= form.label :address %>
+  <%= form.text_field :address, required: true, autocomplete: "address", placeholder: "Enter your address" %>
+</div>
+<div>
+  <%= form.label :city %>
+  <%= form.text_field :city, required: true, autocomplete: "city", placeholder: "Enter your city" %>
+</div>
+<div>
+  <%= form.label :state %>
+  <%= form.text_field :state, required: true, autocomplete: "state", placeholder: "Enter your state" %>
+</div>
+<div>
+  <%= form.label :zip %>
+  <%= form.text_field :zip, required: true, autocomplete: "zip_code", placeholder: "Enter your zip code" %>
+</div>
+<div>
+  <%= form.label :bio %>
+  <%= form.rich_text_area :bio, required: true, placeholder: "Enter your bio" %>
+</div>
 <%= form.submit %>
 <% end %>
