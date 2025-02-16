@@ -1,0 +1,10 @@
+<h1>Create your account</h1>
+
+<%= form_with model: @user, url: registration_url, class: "contents" do |form|  %>
+<%= form.text_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address" %>
+<%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Enter your password" %>
+<%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Confirm your password" %>
+<%= form.submit %>
+<% end %>
+
+<%= link_to "Already have an account? Sign in", new_session_path %>

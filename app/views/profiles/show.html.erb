@@ -1,0 +1,31 @@
+<h1>Profile</h1>
+
+<% if @profile.nil? %>
+<p>No profile found</p>
+<%= link_to "Create your profile", new_profiles_path %>
+<% else %>
+<div>
+  <h2>Name</h2>
+  <%= @profile.full_name %>
+</div>
+<div>
+  <h2>Address</h2>
+  <%= @profile.address %>
+</div>
+<div>
+  <h2>City</h2>
+  <%= @profile.city %>
+</div>
+<div>
+  <h2>State</h2>
+  <%= @profile.state %>
+</div>
+<div>
+  <h2>Zip</h2>
+  <%= @profile.zip %>
+</div>
+<div>
+  <h2>Bio</h2>
+  <%= @profile.bio %>
+</div>
+<% end %>
