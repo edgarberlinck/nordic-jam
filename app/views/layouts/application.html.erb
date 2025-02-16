@@ -28,13 +28,13 @@
     <h1><%= link_to "Nordic Jam", root_path %></h1>
     <nav>
       <ul>
-        <li><%= link_to "Profile", profile_path if authenticated? %></li>
+        <li><%= link_to "Profile", profiles_path if authenticated? %></li>
         <li><%= link_to "Sign in", new_session_path unless authenticated? %></li>
         <li><%= button_to "Logout", session_path, method: :delete if authenticated? %></li>
       </ul>
     </nav>
   </header>
-
+  <div class="notice"><%= notice %></div>
   <main>
     <%= yield %>
   </main>
