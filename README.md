@@ -11,9 +11,10 @@ This project is currently in its early development stage. Stay tuned for updates
 1. Prerequisites
 
 Make sure you have the following installed:
+
 	•	Ruby: >= 3.0.0
-	•	Rails: >= 7.0
-	•	PostgreSQL (or update the database configuration if using another database)
+	•	Rails: >= 8.0
+	•	SQLite (or update the database configuration if using another database)
 	•	Bundler
 
 2. Installation
@@ -42,6 +43,7 @@ The app will be available at http://localhost:3000
 🛠 Roadmap
 
 Nordic Jam is in its early stages, but here are some planned features:
+
 	•	🎶 User Profiles – Musicians can create profiles and showcase their skills.
 	•	📍 Location-Based Search – Find musicians nearby.
 	•	🎤 Jam Session Listings – Organize and join jam sessions.
@@ -52,6 +54,7 @@ Stay tuned for updates!
 📝 Contributing
 
 This is an open-source project, and contributions are welcome!
+
 	1.	Fork the project
 	2.	Create a new branch (git checkout -b feature-name)
 	3.	Commit your changes (git commit -m "Add some feature")
@@ -61,11 +64,5 @@ This is an open-source project, and contributions are welcome!
 📜 License
 
 This project is licensed under the MIT License – see the LICENSE file for details.
-
-🤝 Stay Connected
-
-Follow the project’s progress and get involved!
-	•	Twitter: @NordicJamApp
-	•	Email: support@nordicjam.com
 
 Let’s build something great together! 🎶
