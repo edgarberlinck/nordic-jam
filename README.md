@@ -18,25 +18,27 @@ Make sure you have the following installed:
 	•	Bundler
 
 2. Installation
+
 	1.	Clone the repository
 
-git clone https://github.com/yourusername/nordic-jam.git
-cd nordic-jam
+	> git clone https://github.com/yourusername/nordic-jam.git
+
+	> cd nordic-jam
 
 
 	2.	Install dependencies
 
-bundle install
+	> bundle install
 
 
 	3.	Set up the database
 
-rails db:create db:migrate
+	> rails db:create db:migrate
 
 
 	4.	Start the server
 
-rails server
+	> rails server
 
 The app will be available at http://localhost:3000
 
