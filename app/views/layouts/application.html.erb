@@ -22,14 +22,41 @@
   <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "bulma" %>
   <%= javascript_importmap_tags %>
+
+  <script language="javascript">
+    // Toggle the navbar menu on click
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Add a click event on each of them
+      $navbarBurgers.forEach(el => {
+        el.addEventListener('click', () => {
+
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+
+        });
+      });
+
+    });
+  </script>
 </head>
 
 <body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <%= link_to "Nordic Jam", root_path %>
+      <div class="navbar-item">
+        <%= link_to "Nordic Jam", root_path %>
+      </div>
 
-       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-items">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-items">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -37,35 +64,40 @@
       </a>
     </div>
 
-    <%
-=begin%>
-try to use link_to_if
- <div id="navbar-items" class="navbar-menu">
+    <div id="navbar-items" class="navbar-menu">
       <div class="navbar-start">
-        <%= link_to "Profile", profiles_path if authenticated?, class: "navbar-item" %>
+        <div class="navbar-item">
+          <%= link_to "Profile", profiles_path if authenticated? %>
+        </div>
       </div>
 
-      <div class="navbar-start">
-        <%= link_to "Sign in", new_session_path unless authenticated?, class: "navbar-item" %>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <%= 
+            link_to_if !authenticated?, "Sign in", new_session_path, class: "button is-primary" do
+              button_to "Logout", session_path, method: :delete, class: "button is-primary"
+            end
+          %>
+        </div>
       </div>
-
-      <div class="navbar-start">
-        <%= button_to "Logout", session_path, method: :delete if authenticated?, class: "navbar-item" %>
-      </div>
-    </div>   
-<%
-=end%>
-  </nav>
-  <div class="notice"><%= notice %></div>
-  <main>
-    <%= yield %>
-  </main>
-
-  <footer class="footer">
-    <div class="content has-text-centered">
-    <p>&copy; 2025 Nordic Jam</p>
     </div>
-  </footer>
+    <hr class="navbar-divider">
+  </nav>
+
+  <div class="columns is-flex-direction-column" style="height: 100vh">
+    <div class="notice"><%= notice %></div>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="footer is-flex-align-items-flex-end mt-auto is-narrow">
+      <div class="content has-text-centered">
+        <p>&copy; 2025 Nordic Jam</p>
+      </div>
+    </footer>
+  </div>
+
 </body>
 
 </html>
