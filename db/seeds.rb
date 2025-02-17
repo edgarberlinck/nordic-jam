@@ -3,6 +3,8 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
 [
+  # Singing
+  "Vocal", "Vocal (Lead)", "Vocal (Backing)", "Vocal Percussion",
   # String Instruments
   "Violin", "Viola", "Cello", "Double Bass", "Guitar", "Acoustic Guitar", "Electric Guitar", 
   "Bass Guitar", "Harp", "Banjo", "Mandolin", "Ukulele", "Sitar", "Bouzouki", "Lute", 
