@@ -25,16 +25,12 @@
     <%= form.label :bio %>
     <%= form.rich_text_area :bio, required: true, placeholder: "Enter your bio", class: "textarea" %>
   </div>
-  <%
-=begin%>
-  TODO: Read more about this https://api.rubyonrails.org/v3.2/classes/ActionView/Helpers/FormHelper.html#method-i-check_box
-  <%
-=end%>
+
   <h2 class="title mt-4">Vocals</h2>
   <div class="mt-4 is-flex is-flex-wrap-wrap">
     <% Instrument.where("name LIKE ?", "%Vocal%").order(:name).each do |instrument| %>
     <div class="mt-4 mr-4">
-      <%= form.check_box :instrument, { multiple: true }, instrument, nil %>
+      <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
       <%= form.label instrument.name %>
     </div>
     <% end %>
@@ -44,7 +40,7 @@
   <div class="mt-4 is-flex is-flex-wrap-wrap">
     <% Instrument.where.not("name LIKE ?", "%Vocal%").order(:name).each do |instrument| %>
     <div class="mt-4 mr-4">
-      <%= form.check_box :instrument, { multiple: true }, instrument, nil %>
+      <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
       <%= form.label instrument.name %>
     </div>
     <% end %>
