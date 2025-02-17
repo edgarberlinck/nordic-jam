@@ -1,31 +1,31 @@
-<h1>Profile</h1>
-
 <% if @profile.nil? %>
 <p>No profile found</p>
 <%= link_to "Create your profile", new_profiles_path %>
 <% else %>
-<div>
-  <h2>Name</h2>
-  <%= @profile.full_name %>
-</div>
-<div>
-  <h2>Address</h2>
-  <%= @profile.address %>
-</div>
-<div>
-  <h2>City</h2>
-  <%= @profile.city %>
-</div>
-<div>
-  <h2>State</h2>
-  <%= @profile.state %>
-</div>
-<div>
-  <h2>Zip</h2>
-  <%= @profile.zip %>
-</div>
-<div>
-  <h2>Bio</h2>
-  <%= @profile.bio %>
-</div>
+
+<section class="hero is-primary is-small">
+  <div class="hero-body">
+    <div class="container">
+      <p class="title"><%= @profile.full_name %></p>
+      <p class="subtitle"><%= @profile.address %>, <%= @profile.city %>, <%= @profile.state %></p>
+      <div class="tags">
+        <% @profile.instruments.each if @profile.instruments.any? do |instrument| %>
+        <%= tag.div(instrument.name, class: "tag") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content">
+      <h2>Bio</h2>
+      <%= @profile.bio %>
+    </div>
+  </div>
+</section>
+
+<%= link_to "Edit profile", edit_profile_path, class: "button is-primary" %>
+
 <% end %>
