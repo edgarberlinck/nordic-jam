@@ -1,12 +1,26 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
+  <h1 class="title is-1">Sign in</h1>
+  <%= tag.div(flash[:alert], class: "notification is-danger") if flash[:alert] %>
+  <%= tag.div(flash[:notice], class: "notification is-success") if flash[:notice] %>
+  <%= form_with url: session_path do |form| %>
+  <div>
+    <%= form.label :email_address, "Email address" %>
+    <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "input" %><br>
+  </div>
+  <div>
+    <%= form.label :password, "Password" %>
+    <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "input" %><br>
+  </div>
+  <div class="mt-2">
+    <%= form.submit "Sign in", class: "button is-primary" %>
+  </div>
 
-<%= form_with url: session_path do |form| %>
-<%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-<%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-<%= form.submit "Sign in" %>
-<%= link_to "Create an account", new_registration_path %>
-<% end %>
+  <div class="mt-2">
+    <%= link_to "Forgot password?", new_password_path %>
+  </div>
+  <div class="mt-4">
+    <%= link_to "Don't have an account? Sign up", new_registration_path, class: "is-link" %>
+  </div>
+  <% end %>
+</div>
 <br>
-
-<%= link_to "Forgot password?", new_password_path %>
