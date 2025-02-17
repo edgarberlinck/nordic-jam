@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.instruments = Instrument.find(params[:profile][:instrument_ids])
-    
+
     @profile.user = Current.user
     if @profile.save
       redirect_to profile_path(@profile)
@@ -49,11 +49,11 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(
-      :full_name, 
-      :address, 
-      :city, 
-      :state, 
-      :zip, 
+      :full_name,
+      :address,
+      :city,
+      :state,
+      :zip,
       :bio,
       instrument_ids: []
     )
