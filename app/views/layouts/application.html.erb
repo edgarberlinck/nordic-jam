@@ -25,23 +25,46 @@
 </head>
 
 <body>
-  <header>
-    <h1><%= link_to "Nordic Jam", root_path %></h1>
-    <nav>
-      <ul>
-        <li><%= link_to "Profile", profiles_path if authenticated? %></li>
-        <li><%= link_to "Sign in", new_session_path unless authenticated? %></li>
-        <li><%= button_to "Logout", session_path, method: :delete if authenticated? %></li>
-      </ul>
-    </nav>
-  </header>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <%= link_to "Nordic Jam", root_path %>
+
+       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-items">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <%
+=begin%>
+try to use link_to_if
+ <div id="navbar-items" class="navbar-menu">
+      <div class="navbar-start">
+        <%= link_to "Profile", profiles_path if authenticated?, class: "navbar-item" %>
+      </div>
+
+      <div class="navbar-start">
+        <%= link_to "Sign in", new_session_path unless authenticated?, class: "navbar-item" %>
+      </div>
+
+      <div class="navbar-start">
+        <%= button_to "Logout", session_path, method: :delete if authenticated?, class: "navbar-item" %>
+      </div>
+    </div>   
+<%
+=end%>
+  </nav>
   <div class="notice"><%= notice %></div>
   <main>
     <%= yield %>
   </main>
 
-  <footer>
+  <footer class="footer">
+    <div class="content has-text-centered">
     <p>&copy; 2025 Nordic Jam</p>
+    </div>
   </footer>
 </body>
 
