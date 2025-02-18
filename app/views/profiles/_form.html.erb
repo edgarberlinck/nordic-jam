@@ -1,81 +1,83 @@
-<div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
-  <h1 class="title">Edit Profile</h1>
-  <%= form_with model: profile do |form| %>
-  <div class="mt-4">
-    <%= form.label :full_name %>
-    <%= form.text_field :full_name, required: true, autofocus: true, autocomplete: "name", placeholder: "Enter your name", class: "input" %>
-  </div>
-  <div class="mt-4">
-    <%= form.label :address %>
-    <%= form.text_field :address, required: true, autocomplete: "address", placeholder: "Enter your address", class: "input" %>
-  </div>
-  <div class="mt-4">
-    <%= form.label :city %>
-    <%= form.text_field :city, required: true, autocomplete: "city", placeholder: "Enter your city", class: "input" %>
-  </div>
-  <div class="mt-4">
-    <%= form.label :state %>
-    <%= form.text_field :state, required: true, autocomplete: "state", placeholder: "Enter your state", class: "input" %>
-  </div>
-  <div class="mt-4">
-    <%= form.label :zip %>
-    <%= form.text_field :zip, required: true, autocomplete: "zip_code", placeholder: "Enter your zip code", class: "input" %>
-  </div>
-  <div class="mt-4">
-    <%= form.label :bio %>
-    <%= form.rich_text_area :bio, required: true, placeholder: "Enter your bio", class: "textarea" %>
-  </div>
+<div class="container">
+  <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+    <h2 class="title mt-4">Basic Information</h2>
+    <%= form_with model: profile do |form| %>
+    <div class="mt-4">
+      <%= form.label :full_name %>
+      <%= form.text_field :full_name, required: true, autofocus: true, autocomplete: "name", placeholder: "Enter your name", class: "input" %>
+    </div>
+    <div class="mt-4">
+      <%= form.label :address %>
+      <%= form.text_field :address, required: true, autocomplete: "address", placeholder: "Enter your address", class: "input" %>
+    </div>
+    <div class="mt-4">
+      <%= form.label :city %>
+      <%= form.text_field :city, required: true, autocomplete: "city", placeholder: "Enter your city", class: "input" %>
+    </div>
+    <div class="mt-4">
+      <%= form.label :state %>
+      <%= form.text_field :state, required: true, autocomplete: "state", placeholder: "Enter your state", class: "input" %>
+    </div>
+    <div class="mt-4">
+      <%= form.label :zip %>
+      <%= form.text_field :zip, required: true, autocomplete: "zip_code", placeholder: "Enter your zip code", class: "input" %>
+    </div>
+    <div class="mt-4">
+      <%= form.label :bio %>
+      <%= form.rich_text_area :bio, required: true, placeholder: "Enter your bio", class: "textarea" %>
+    </div>
 
-  <h2 class="title mt-4">Vocals</h2>
-  <div class="mt-4 checkboxes">
-    <% Instrument.where("name LIKE ?", "%Vocal%").order(:name).each do |instrument| %>
-    <div class="mt-4 mr-4">
-      <label class="checkbox">
-        <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
-        <%= instrument.name %>
-      </label>
+    <h2 class="title mt-4">Vocals</h2>
+    <div class="mt-4 checkboxes">
+      <% Instrument.where("name LIKE ?", "%Vocal%").order(:name).each do |instrument| %>
+      <div class="mt-4 mr-4">
+        <label class="checkbox">
+          <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
+          <%= instrument.name %>
+        </label>
+      </div>
+      <% end %>
+    </div>
+
+    <h2 class="title mt-4">Instruments</h2>
+    <div class="mt-4 checkboxes">
+      <% Instrument.where.not("name LIKE ?", "%Vocal%").order(:name).each do |instrument| %>
+      <div class="mt-4 mr-4">
+        <label class="checkbox">
+          <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
+          <%= instrument.name %>
+        </label>
+      </div>
+      <% end %>
+    </div>
+
+    <h2 class="title mt-4">Styles</h2>
+    <div class="mt-4 checkboxes">
+      <% Style.order(:name).each do |style| %>
+      <div class="mt-4 mr-4">
+        <label class="checkbox">
+          <%= form.check_box :style_ids, { multiple: true }, style.id, nil %>
+          <%= style.name %>
+        </label>
+      </div>
+      <% end %>
+    </div>
+
+    <h2 class="title mt-4">Influences</h2>
+    <div class="mt-4 checkboxes">
+      <% Influence.order(:name).each do |influence| %>
+      <div class="mt-4 mr-4">
+        <label class="checkbox">
+          <%= form.check_box :influence_ids, { multiple: true }, influence.id, nil %>
+          <%= influence.name %>
+        </label>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="mt-4">
+      <%= form.submit "Update Profile", class: "button is-primary" %>
     </div>
     <% end %>
   </div>
-
-  <h2 class="title mt-4">Instruments</h2>
-  <div class="mt-4 checkboxes">
-    <% Instrument.where.not("name LIKE ?", "%Vocal%").order(:name).each do |instrument| %>
-    <div class="mt-4 mr-4">
-      <label class="checkbox">
-        <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
-        <%= instrument.name %>
-      </label>
-    </div>
-    <% end %>
-  </div>
-
-  <h2 class="title mt-4">Styles</h2>
-  <div class="mt-4 checkboxes">
-    <% Style.order(:name).each do |style| %>
-    <div class="mt-4 mr-4">
-      <label class="checkbox">
-        <%= form.check_box :style_ids, { multiple: true }, style.id, nil %>
-        <%= style.name %>
-      </label>
-    </div>
-    <% end %>
-  </div>
-
-  <h2 class="title mt-4">Influences</h2>
-  <div class="mt-4 checkboxes">
-    <% Influence.order(:name).each do |influence| %>
-    <div class="mt-4 mr-4">
-      <label class="checkbox">
-        <%= form.check_box :influence_ids, { multiple: true }, influence.id, nil %>
-        <%= influence.name %>
-      </label>
-    </div>
-    <% end %>
-  </div>
-
-  <div class="mt-4">
-    <%= form.submit "Update Profile", class: "button is-primary" %>
-  </div>
-  <% end %>
 </div>

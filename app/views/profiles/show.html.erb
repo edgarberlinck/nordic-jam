@@ -16,9 +16,8 @@
     </div>
   </div>
 </section>
-
-<section class="section">
-  <div class="container">
+<div class="container">
+  <section class="section">
     <div class="content">
       <h2>Styles</h2>
       <div class="tags">
@@ -27,11 +26,9 @@
         <% end %>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="container">
+  <section class="section">
     <div class="content">
       <h2>Influences</h2>
       <div class="tags">
@@ -40,18 +37,19 @@
         <% end %>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="container">
+  <section class="section">
     <div class="content">
       <h2>Bio</h2>
       <%= @profile.bio %>
     </div>
-  </div>
-</section>
-
-<%= link_to "Edit profile", edit_profile_path, class: "button is-primary" %>
+  </section>
+  <section class="section">
+    <div class="container">
+      <%= link_to "Edit profile", edit_profile_path, class: "button is-primary" %>
+    </div>
+  </section>
+</div>
 
 <% end %>
