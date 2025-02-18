@@ -1,13 +1,32 @@
 <div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
-  <h1 class="title is-1">Sign in</h1>
+  <svg width="500" height="200" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Texto estilizado -->
+    <text x="50%" y="50%" font-size="60" font-family="sans-serif" fill="black" text-anchor="middle" dominant-baseline="middle">
+      NORDIC JAM
+    </text>
+
+    <!-- Linhas rúnicas personalizadas -->
+    <path d="M80 100 L100 40 L120 100" stroke="black" stroke-width="6" /> <!-- N -->
+    <path d="M140 40 L140 100" stroke="black" stroke-width="6" /> <!-- I -->
+    <path d="M160 100 L180 40 L200 100" stroke="black" stroke-width="6" /> <!-- R -->
+    <path d="M220 40 L220 100 L250 100" stroke="black" stroke-width="6" /> <!-- D -->
+    <path d="M270 40 L270 100" stroke="black" stroke-width="6" /> <!-- I -->
+    <path d="M290 40 L310 40 L330 100" stroke="black" stroke-width="6" /> <!-- C -->
+
+    <path d="M360 40 L360 100" stroke="black" stroke-width="6" /> <!-- J -->
+    <path d="M380 100 L400 40 L420 100" stroke="black" stroke-width="6" /> <!-- A -->
+    <path d="M440 40 L460 100 L480 40" stroke="black" stroke-width="6" /> <!-- M -->
+  </svg>
+  <h1 class="title mt-4">Sign in</h1>
   <%= tag.div(flash[:alert], class: "notification is-danger") if flash[:alert] %>
   <%= tag.div(flash[:notice], class: "notification is-success") if flash[:notice] %>
+
   <%= form_with url: session_path do |form| %>
-  <div>
+  <div class="mt-4">
     <%= form.label :email_address, "Email address" %>
     <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "input" %><br>
   </div>
-  <div>
+  <div class="mt-4">
     <%= form.label :password, "Password" %>
     <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "input" %><br>
   </div>
