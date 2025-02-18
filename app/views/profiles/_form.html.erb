@@ -46,6 +46,15 @@
     <% end %>
   </div>
 
+  <h2 class="title mt-4">Styles</h2>
+  <div class="mt-4 is-flex is-flex-wrap-wrap">
+    <% Style.order(:name).each do |style| %>
+    <div class="mt-4 mr-4">
+      <%= form.check_box :style_ids, { multiple: true }, style.id, nil %>
+      <%= form.label style.name %>
+    </div>
+    <% end %>
+  </div>
 
   <div class="mt-4">
     <%= form.submit "Update Profile", class: "button is-primary" %>
