@@ -62,7 +62,8 @@ end
   # Metal & Hard Rock
   "Black Sabbath", "Metallica", "Iron Maiden", "Judas Priest", "Slayer",
   "Megadeth", "Pantera", "Deep Purple", "Motörhead", "Tool", "Kiss", "AC/DC", 
-  "Aerosmith", "The Rolling Stones", "The Who", "Audioslave", "Rage Against the Machine", "Supultura",
+  "Aerosmith", "The Rolling Stones", "The Who", "Audioslave", "Rage Against the Machine", 
+  "Supultura",
 
   # Alternative & Grunge
   "Nirvana", "Pearl Jam", "Soundgarden", "Alice in Chains", "Smashing Pumpkins",
