@@ -8,9 +8,14 @@
     <div class="container">
       <p class="title"><%= @profile.full_name %></p>
       <p class="subtitle"><%= @profile.address %>, <%= @profile.city %>, <%= @profile.state %></p>
-      <div class="tags">
+      <div class="tags are-medium">
         <% @profile.instruments.each do |instrument| %>
         <%= tag.div(instrument.name, class: "tag") %>
+        <% end %>
+      </div>
+      <div class="tags">
+        <% @profile.styles.each do |style| %>
+        <%= tag.div(style.name, class: "tag") %>
         <% end %>
       </div>
     </div>

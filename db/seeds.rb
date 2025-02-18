@@ -32,3 +32,24 @@
 ].each do |instrument|
   Instrument.find_or_create_by(name: instrument)
 end
+
+[
+  "Rock", "Pop", "Hip Hop", "Rap", "R&B", "Soul", "Jazz", "Blues",
+  "Country", "Folk", "Bluegrass", "Reggae", "Ska", "Punk", "Metal",
+  "Hard Rock", "Alternative Rock", "Indie Rock", "Grunge", "Funk",
+  "Disco", "House", "Techno", "Trance", "Dubstep", "Drum and Bass",
+  "EDM", "Synthpop", "New Wave", "Industrial", "Gospel", "Christian",
+  "Classical", "Opera", "Orchestral", "Choral", "Ambient", "Experimental",
+  "Post-Rock", "Shoegaze", "Psychedelic", "Progressive Rock", "Latin",
+  "Salsa", "Merengue", "Bachata", "Reggaeton", "Cumbia", "Afrobeat",
+  "Highlife", "K-Pop", "J-Pop", "C-Pop", "Visual Kei", "Bollywood",
+  "Bossa Nova", "Samba", "Flamenco", "Tango", "Zydeco", "Cajun",
+  "Drone", "Trip-Hop", "Lo-Fi", "Chiptune", "Breakbeat", "Hardcore",
+  "Grindcore", "Screamo", "Post-Hardcore", "Emo", "Math Rock",
+  "Surf Rock", "Doo-Wop", "Swing", "Big Band", "Baroque Pop",
+  "Art Rock", "Avant-Garde", "Neoclassical", "Darkwave", "Coldwave",
+  "Synthwave", "Vaporwave", "Dungeon Synth", "Sludge Metal", "Black Metal",
+  "Death Metal", "Thrash Metal", "Djent", "Nu Metal", "Melodic Hardcore"
+].each do |style|
+  Style.find_or_create_by(name: style)
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_17_201152) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_18_092909) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -64,6 +64,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_17_201152) do
     t.index ["profile_id"], name: "index_profile_instruments_on_profile_id"
   end
 
+  create_table "profile_styles", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "style_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_profile_styles_on_profile_id"
+    t.index ["style_id"], name: "index_profile_styles_on_style_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "full_name"
     t.text "bio"
@@ -88,6 +97,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_17_201152) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "styles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password_digest", null: false
@@ -100,6 +115,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_17_201152) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "profile_instruments", "instruments"
   add_foreign_key "profile_instruments", "profiles"
+  add_foreign_key "profile_styles", "profiles"
+  add_foreign_key "profile_styles", "styles"
   add_foreign_key "profiles", "users"
   add_foreign_key "sessions", "users"
 end
