@@ -61,11 +61,12 @@ end
 
   # Metal & Hard Rock
   "Black Sabbath", "Metallica", "Iron Maiden", "Judas Priest", "Slayer",
-  "Megadeth", "Pantera", "Deep Purple", "Motörhead", "Tool",
+  "Megadeth", "Pantera", "Deep Purple", "Motörhead", "Tool", "Kiss", "AC/DC", 
+  "Aerosmith", "The Rolling Stones", "The Who", "Audioslave", "Rage Against the Machine", "Supultura",
 
   # Alternative & Grunge
   "Nirvana", "Pearl Jam", "Soundgarden", "Alice in Chains", "Smashing Pumpkins",
-  "Red Hot Chili Peppers", "Foo Fighters", "Radiohead", "Beck", "Nine Inch Nails",
+  "Red Hot Chili Peppers", "Foo Fighters", "Radiohead", "Beck", "Nine Inch Nails", 
 
   # Punk & Post-Punk
   "The Ramones", "The Clash", "Sex Pistols", "Dead Kennedys", "Misfits",
