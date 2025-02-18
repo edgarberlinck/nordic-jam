@@ -13,9 +13,30 @@
         <%= tag.div(instrument.name, class: "tag") %>
         <% end %>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content">
+      <h2>Styles</h2>
       <div class="tags">
         <% @profile.styles.each do |style| %>
         <%= tag.div(style.name, class: "tag") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content">
+      <h2>Influences</h2>
+      <div class="tags">
+        <% @profile.influences.each do |influence| %>
+        <%= tag.div(influence.name, class: "tag") %>
         <% end %>
       </div>
     </div>

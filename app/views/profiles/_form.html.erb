@@ -62,6 +62,18 @@
     <% end %>
   </div>
 
+  <h2 class="title mt-4">Influences</h2>
+  <div class="mt-4 checkboxes">
+    <% Influence.order(:name).each do |influence| %>
+    <div class="mt-4 mr-4">
+      <label class="checkbox">
+        <%= form.check_box :influence_ids, { multiple: true }, influence.id, nil %>
+        <%= influence.name %>
+      </label>
+    </div>
+    <% end %>
+  </div>
+
   <div class="mt-4">
     <%= form.submit "Update Profile", class: "button is-primary" %>
   </div>
