@@ -53,4 +53,3 @@ end
 ].each do |style|
   Style.find_or_create_by(name: style)
 end
-
