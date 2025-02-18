@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_18_092909) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_18_095956) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,10 +49,25 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_092909) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "influences", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "instruments", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profile_influences", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "influence_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["influence_id"], name: "index_profile_influences_on_influence_id"
+    t.index ["profile_id"], name: "index_profile_influences_on_profile_id"
   end
 
   create_table "profile_instruments", force: :cascade do |t|
@@ -113,6 +128,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_092909) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "profile_influences", "influences"
+  add_foreign_key "profile_influences", "profiles"
   add_foreign_key "profile_instruments", "instruments"
   add_foreign_key "profile_instruments", "profiles"
   add_foreign_key "profile_styles", "profiles"
