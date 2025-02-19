@@ -1,6 +1,8 @@
 <% if @profile.nil? %>
-<p>No profile found</p>
-<%= link_to "Create your profile", new_profiles_path %>
+<div style="height: 75vh;" class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center is-align-content-center">
+  <h1 class="title">No profile found</h1>
+  <%= link_to "Create your profile", new_profile_path, class: "button is-primary" %>
+</div>
 <% else %>
 
 <section class="hero is-primary is-small">
