@@ -90,7 +90,7 @@
           </div>
           <div class="navbar-dropdown is-right">
             <div class="navbar-item">
-              <%= link_to "Profile", profiles_path if authenticated? %>
+              <%= link_to "Profile", profiles_path(Current.user) if authenticated? %>
             </div>
             <hr class="navbar-divider">
             <div class="navbar-item">
