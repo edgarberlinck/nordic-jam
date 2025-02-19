@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resource :registration, only: %i[new create]
   resources :passwords, param: :token
   resources :profiles
-  
+
   get "search" => "search#index"
   get "search/results" => "search#index"
 

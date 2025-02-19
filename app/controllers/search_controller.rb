@@ -1,11 +1,11 @@
-class SearchController < ApplicationController  
+class SearchController < ApplicationController
   def index
-    @instruments = [Instrument.new(name: "All", id: 0)].concat(Instrument.all)
-    @styles = [Style.new(name: "All", id: 0)].concat(Style.all)
+    @instruments = [ Instrument.new(name: "All", id: 0) ].concat(Instrument.all)
+    @styles = [ Style.new(name: "All", id: 0) ].concat(Style.all)
     if search_params.present?
       # I don't want to show the current user's profile in the search results
       @results = Profile.where("profiles.id <> ?", Current.user.id)
-      
+
       # Only filter by instrument if one is selected and not blank
       if search_params[:instrument].present? && search_params[:instrument] != "" && search_params[:instrument] != "0"
         @results = @results.joins(:profile_instruments)
