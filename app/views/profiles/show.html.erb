@@ -1,13 +1,24 @@
 <section class="hero is-primary is-small">
-  <div class="hero-body">
+  <div class="hero-body is-flex is-flex-direction-row">
     <div class="container">
-      <p class="title"><%= @profile.full_name %></p>
-      <p class="subtitle"><%= @profile.address %>, <%= @profile.city %>, <%= @profile.state %></p>
-      <div class="tags are-medium">
-        <% @profile.instruments.each do |instrument| %>
-        <%= tag.div(instrument.name, class: "tag") %>
-        <% end %>
-        <%= link_to "+", profile_instruments_path(@profile), class: "button is-small is-secondary" %>
+      <div class="is-flex is-flex-direction-row is-align-items-center">
+        <div class="mr-5">
+          <% if @profile.avatar.attached? %>
+          <%= image_tag @profile.avatar, class: "image profile-avatar" %>
+          <% else %>
+          <%= image_tag "default-avatar.png", class: "image profile-avatar" %>
+          <% end %>
+        </div>
+        <div>
+          <p class="title"><%= @profile.full_name %> <%= link_to "✎", edit_profile_path(@profile), class: "subtitle" %></p>
+          <p class="subtitle"><%= @profile.address %>, <%= @profile.city %>, <%= @profile.state %></p>
+          <div class="tags are-medium">
+            <% @profile.instruments.each do |instrument| %>
+            <%= tag.div(instrument.name, class: "tag") %>
+            <% end %>
+            <%= link_to "+", profile_instruments_path(@profile), class: "button is-small is-secondary" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

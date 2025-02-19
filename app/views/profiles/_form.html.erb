@@ -2,6 +2,13 @@
   <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
     <h2 class="title mt-4">Basic Information</h2>
     <%= form_with model: profile do |form| %>
+    <% if @profile.avatar.attached? %>
+    <%= image_tag @profile.avatar, class: "image profile-avatar--big" %>
+    <%end%>
+    <div class="mt-4">
+      <%= form.label :avatar, style: "display: block" %>
+      <%= form.file_field :avatar, accept: "image/*" %>
+    </div>
     <div class="mt-4">
       <%= form.label :full_name %>
       <%= form.text_field :full_name, required: true, autofocus: true, autocomplete: "name", placeholder: "Enter your name", class: "input" %>
@@ -29,6 +36,7 @@
 
     <div class="mt-4">
       <%= form.submit "Update Profile", class: "button is-primary" %>
+      <%= link_to "Cancel", profile_path(@profile), class: "button is-secondary ml-4" %>
     </div>
     <% end %>
   </div>

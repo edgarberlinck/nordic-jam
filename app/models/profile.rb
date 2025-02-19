@@ -6,7 +6,7 @@ class Profile < ApplicationRecord
   has_many :styles, through: :profile_styles
   has_many :profile_influences
   has_many :influences, through: :profile_influences
-
+  has_one_attached :avatar
   validates :full_name, presence: true
   validates :address, presence: true
   validates :city, presence: true

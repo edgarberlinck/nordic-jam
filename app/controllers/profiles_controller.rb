@@ -14,9 +14,6 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find_by(user: Current.user)
-    # @profile.influences = Influence.find(params[:profile][:influence_ids])
-    # @profile.styles = Style.find(params[:profile][:style_ids])
-    # @profile.instruments = Instrument.find(params[:profile][:instrument_ids])
 
     if @profile.update(profile_params)
       redirect_to profile_path(@profile)
@@ -57,9 +54,7 @@ class ProfilesController < ApplicationController
       :state,
       :zip,
       :bio,
-      instrument_ids: [],
-      style_ids: [],
-      influence_ids: []
+      :avatar
     )
   end
 end
