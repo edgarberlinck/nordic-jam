@@ -9,7 +9,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       start_new_session_for @user
-      redirect_to profiles_edit_path, notice: "Successfully signed up!"
+      redirect_to profile_path(@user), notice: "Successfully signed up!"
     else
       render :new
     end

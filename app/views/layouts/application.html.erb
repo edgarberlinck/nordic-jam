@@ -73,6 +73,11 @@
       <%= link_to "Home", root_path %>
     </div>
     <div id="navbar-items" class="navbar-menu">
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <%= link_to "Let's Jam!", search_path %>
+        </div>
+      </div>
       <div class="navbar-end">
         <% if authenticated? %>
         <div class="navbar-item has-dropdown is-hoverable is-clearfix">

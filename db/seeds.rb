@@ -23,7 +23,7 @@
   "Xylophone", "Marimba", "Vibraphone", "Glockenspiel", "Chimes", "Timpani",
 
   # Percussion Instruments (Unpitched)
-  "Snare Drum", "Bass Drum", "Tom-Toms", "Bongo Drums", "Congas", "Djembe", "Cajón", "Tabla",
+  "Drums", "Snare Drum", "Bass Drum", "Tom-Toms", "Bongo Drums", "Congas", "Djembe", "Cajón", "Tabla",
   "Tambourine", "Castanets", "Triangle", "Cymbals", "Gong", "Wood Block", "Claves", "Cowbell",
 
   # Keyboard Instruments
