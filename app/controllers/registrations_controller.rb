@@ -3,6 +3,7 @@ class RegistrationsController < ApplicationController
 
   def new
     @user = User.new
+    @profile = Profile.new
   end
 
   def create

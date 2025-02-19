@@ -23,7 +23,7 @@
   <%= form_with model: @user, url: registration_url, class: "contents" do |form|  %>
   <div class="mt-4">
     <%= form.label :email_address, "Email address" %>
-    <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", class: "input" %>
+    <%= form.email_field :email_address, required: true, autofocus: false, autocomplete: "username", placeholder: "Enter your email address", class: "input" %>
   </div>
   <div class="mt-4">
     <%= form.label :password, "Password" %>

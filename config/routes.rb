@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resource :session
   resource :registration, only: %i[new create]
   resources :passwords, param: :token
-  resources :profiles
+  resources :profiles do
+    resources :instruments, only: %i[index show]
+    resources :influences, only: %i[index show]
+    get "styles", to: "musical_styles#index"
+  end
 
   get "search" => "search#index"
   get "search/results" => "search#index"

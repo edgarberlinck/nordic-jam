@@ -1,0 +1,34 @@
+ <div class="container">
+   <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+     <%= form_with model: @profile do |form| %>
+     <h2 class="title mt-4">Vocals</h2>
+     <div class="mt-4 checkboxes">
+       <% Instrument.where("name LIKE ?", "%Vocal%").order(:name).each do |instrument| %>
+       <div class="mt-4 mr-4">
+         <label class="checkbox">
+           <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
+           <%= instrument.name %>
+         </label>
+       </div>
+       <% end %>
+     </div>
+
+     <h2 class="title mt-4">Instruments</h2>
+     <div class="mt-4 checkboxes">
+       <% Instrument.where.not("name LIKE ?", "%Vocal%").order(:name).each do |instrument| %>
+       <div class="mt-4 mr-4">
+         <label class="checkbox">
+           <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
+           <%= instrument.name %>
+         </label>
+       </div>
+       <% end %>
+     </div>
+
+     <div class="mt-4">
+       <%= form.submit "Save", class: "button is-primary" %>
+       <%= link_to "Cancel", profile_path(@profile), class: "button is-secondary ml-4" %>
+     </div>
+     <% end %>
+   </div>
+ </div>
