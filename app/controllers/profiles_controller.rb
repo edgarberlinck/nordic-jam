@@ -51,6 +51,7 @@ class ProfilesController < ApplicationController
       :full_name,
       :address,
       :city,
+      :country,
       :state,
       :zip,
       :bio,

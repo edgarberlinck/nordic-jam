@@ -14,6 +14,13 @@
       <%= form.text_field :full_name, required: true, autofocus: true, autocomplete: "name", placeholder: "Enter your name", class: "input" %>
     </div>
     <div class="mt-4">
+      <%= form.label :country %>
+      <br />
+      <div class="select">
+        <%= form.select :country, options_for_select(country_list, selected: profile.country) %>
+      </div>
+    </div>
+    <div class="mt-4">
       <%= form.label :address %>
       <%= form.text_field :address, required: true, autocomplete: "address", placeholder: "Enter your address", class: "input" %>
     </div>
