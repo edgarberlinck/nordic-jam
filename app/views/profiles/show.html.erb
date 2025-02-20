@@ -3,7 +3,7 @@
     <div class="container">
       <div class="is-flex is-flex-direction-row is-align-items-center">
         <div class="mr-5">
-          <% if @profile.avatar.attached? %>
+          <% if  @profile.avatar && @profile.avatar.attached? %>
           <%= image_tag @profile.avatar, class: "image profile-avatar" %>
           <% else %>
           <%= image_tag "default-avatar.png", class: "image profile-avatar" %>
@@ -50,11 +50,6 @@
     <div class="content">
       <h2>Bio</h2>
       <%= @profile.bio %>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <%= link_to "Edit profile", edit_profile_path, class: "button is-primary" %>
     </div>
   </section>
 </div>
