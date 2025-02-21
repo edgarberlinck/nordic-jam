@@ -23,9 +23,9 @@ class SearchController < ApplicationController
         @results = @results.where("LOWER(city) LIKE ?", "%#{search_params[:city].downcase}%")
       end
 
-      # Only filter by state if it's not blank
-      if search_params[:state].present? && !search_params[:state].blank?
-        @results = @results.where("LOWER(state) LIKE ?", "%#{search_params[:state].downcase}%")
+      # Only filter by country if it's not blank
+      if search_params[:country].present? && !search_params[:country].blank?
+        @results = @results.where("LOWER(country) LIKE ?", "%#{search_params[:country].downcase}%")
       end
 
       @results = @results.distinct
@@ -37,6 +37,6 @@ class SearchController < ApplicationController
   private
 
   def search_params
-    params.permit(:city, :state, :instrument, :style)
+    params.permit(:country, :state, :instrument, :style)
   end
 end

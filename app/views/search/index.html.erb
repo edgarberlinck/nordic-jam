@@ -1,31 +1,33 @@
 <div class="section">
   <%= form_tag search_results_path(search_params: @search_params), method: :get do %>
-  <div class="is-flex">
-    <div class="column is-one-fifth">
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <%= label_tag :country, "Country" %>
+        <%= text_field_tag :country, params[:country], class: "input"  %>
+      </div>
+    </div>
+    <div class="column">
       <div class="field">
         <%= label_tag :city, "City" %>
-        <%= text_field_tag :city, nil, class: "input" %>
+        <%= text_field_tag :city, params[:city], class: "input" %>
       </div>
     </div>
-    <div class="column is-one-fifth">
-      <div class="field">
-        <%= label_tag :state, "State" %>
-        <%= text_field_tag :state, nil, class: "input" %>
-      </div>
-    </div>
-    <div class="column is-one-fifth">
+    <div class="column">
       <div class="field">
         <%= label_tag :instrument, "Instrument" %>
+        <br />
         <div class="select">
-          <%= select_tag :instrument, options_from_collection_for_select(@instruments, "id", "name", {include_blank: "All"}) %>
+          <%= select_tag :instrument, options_from_collection_for_select(@instruments, "id", "name", {include_blank: "All", selected: params[:instrument]}) %>
         </div>
       </div>
     </div>
-    <div class="column is-one-fifth">
+    <div class="column">
       <div class="field">
         <%= label_tag :style, "Style" %>
+        <br />
         <div class="select">
-          <%= select_tag :style, options_from_collection_for_select(@styles, "id", "name", {include_blank: "All"}) %>
+          <%= select_tag :style, options_from_collection_for_select(@styles, "id", "name", {include_blank: "All", selected: params[:style]}) %>
         </div>
       </div>
     </div>
@@ -44,7 +46,7 @@
   <% @results.each do |result| %>
   <div class="box">
     <h3 class="title is-4"><%= result.full_name %></h3>
-    <p><%= "#{result.city}, #{result.state}" %></p>
+    <p><%= "#{result.country}, #{result.city}" %></p>
     <div class="content">
       <p><strong>Instruments:</strong> <%= result.instruments.pluck(:name).join(", ") %></p>
       <p><strong>Styles:</strong> <%= result.styles.pluck(:name).join(", ") %></p>
