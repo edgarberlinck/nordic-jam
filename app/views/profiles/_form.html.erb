@@ -41,16 +41,14 @@
 </div>
 
 <script>
-  const countrySelectElement = document.getElementById('profile_country')
-
-  const cities = {
-    'sweden': "<%= sweden_city_list %>".split(','),
-    'denmark': "<%= denmark_city_list %>".split(','),
-    'finland': "<%= finland_city_list %>".split(','),
-    'norway': "<%= norway_city_list %>".split(','),
-  }
-
   function onChangeCountry(e) {
+    const cities = {
+      'sweden': "<%= sweden_city_list %>".split(','),
+      'denmark': "<%= denmark_city_list %>".split(','),
+      'finland': "<%= finland_city_list %>".split(','),
+      'norway': "<%= norway_city_list %>".split(','),
+    }
+
     const cityList = cities[e.target.value]
     const profileCity = document.getElementById('profile_city')
 
@@ -64,5 +62,5 @@
     })
   }
 
-  countrySelectElement.addEventListener('change', onChangeCountry)
+  document.getElementById('profile_country').addEventListener('change', onChangeCountry)
 </script>
