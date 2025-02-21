@@ -14,20 +14,18 @@
       <%= form.text_field :full_name, required: true, autofocus: true, autocomplete: "name", placeholder: "Enter your name", class: "input" %>
     </div>
     <div class="mt-4">
-      <%= form.label :address %>
-      <%= form.text_field :address, required: true, autocomplete: "address", placeholder: "Enter your address", class: "input" %>
+      <%= form.label :country %>
+      <br />
+      <div class="select">
+        <%= form.select :country, options_for_select(country_list, selected: profile.country) %>
+      </div>
     </div>
     <div class="mt-4">
       <%= form.label :city %>
-      <%= form.text_field :city, required: true, autocomplete: "city", placeholder: "Enter your city", class: "input" %>
-    </div>
-    <div class="mt-4">
-      <%= form.label :state %>
-      <%= form.text_field :state, required: true, autocomplete: "state", placeholder: "Enter your state", class: "input" %>
-    </div>
-    <div class="mt-4">
-      <%= form.label :zip %>
-      <%= form.text_field :zip, required: true, autocomplete: "zip_code", placeholder: "Enter your zip code", class: "input" %>
+      <br />
+      <div class="select">
+        <%= form.select :city, options_for_select(city_of_country(profile.country), selected: profile.city) %>
+      </div>
     </div>
     <div class="mt-4">
       <%= form.label :bio %>
@@ -41,3 +39,28 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  function onChangeCountry(e) {
+    const cities = {
+      'sweden': "<%= sweden_city_list %>".split(','),
+      'denmark': "<%= denmark_city_list %>".split(','),
+      'finland': "<%= finland_city_list %>".split(','),
+      'norway': "<%= norway_city_list %>".split(','),
+    }
+
+    const cityList = cities[e.target.value]
+    const profileCity = document.getElementById('profile_city')
+
+    while (profileCity.lastElementChild)
+      profileCity.removeChild(profileCity.lastElementChild)
+
+    cityList.map(city => {
+      const option = document.createElement('option')
+      option.innerHTML = city
+      profileCity.appendChild(option)
+    })
+  }
+
+  document.getElementById('profile_country').addEventListener('change', onChangeCountry)
+</script>
