@@ -24,12 +24,8 @@
       <%= form.label :city %>
       <br />
       <div class="select">
-        <%= form.select :city, options_for_select(city_of_country(profile.country)) %>
+        <%= form.select :city, options_for_select(city_of_country(profile.country), selected: profile.city) %>
       </div>
-    </div>
-    <div class="mt-4">
-      <%= form.label :zip %>
-      <%= form.text_field :zip, required: true, autocomplete: "zip_code", placeholder: "Enter your zip code", class: "input" %>
     </div>
     <div class="mt-4">
       <%= form.label :bio %>
@@ -49,22 +45,22 @@
 
   const cities = {
     'sweden': "<%= sweden_city_list %>".split(','),
-    'denamark': "<%= denamark_city_list %>".split(','),
+    'denmark': "<%= denmark_city_list %>".split(','),
     'finland': "<%= finland_city_list %>".split(','),
     'norway': "<%= norway_city_list %>".split(','),
   }
 
   function onChangeCountry(e) {
     const cityList = cities[e.target.value]
-    const profilecity = document.getElementById('profile_city')
-    
-    while (profilecity.lastElementChild)
-      profilecity.removeChild(profilecity.lastElementChild)
+    const profileCity = document.getElementById('profile_city')
+
+    while (profileCity.lastElementChild)
+      profileCity.removeChild(profileCity.lastElementChild)
 
     cityList.map(city => {
       const option = document.createElement('option')
-      option.innerHTML = city 
-      profilecity.appendChild(option)
+      option.innerHTML = city
+      profileCity.appendChild(option)
     })
   }
 
