@@ -1,7 +1,22 @@
 class InstrumentsController < ApplicationController
   def index
     @profile = Profile.find(params[:profile_id])
-    @instruments = Instrument.all
+
+    @string_instruments = Instrument.where(category: "string")
+    @woodwind_instruments = Instrument.where(category: "woodwind")
+    @brass_instruments = Instrument.where(category: "brass")
+    @percussion_instruments = Instrument.where(category: "percussion")
+    @keyboard_instruments = Instrument.where(category: "keyboard")
+    @vocal_instruments = Instrument.where(category: "vocal")
+  end
+
+  def edit
+    @string_instruments = Instrument.where(category: "string")
+    @woodwind_instruments = Instrument.where(category: "woodwind")
+    @brass_instruments = Instrument.where(category: "brass")
+    @percussion_instruments = Instrument.where(category: "percussion")
+    @keyboard_instruments = Instrument.where(category: "keyboard")
+    @vocal_instruments = Instrument.where(category: "vocal")
   end
 
   def show
@@ -11,7 +26,12 @@ class InstrumentsController < ApplicationController
   def update
     @profile = Profile.find(params[:profile_id])
     @profile.instruments = Instrument.find(params[:profile][:instrument_ids])
-    redirect_to @profile
+
+    if @profile.save
+      redirect_to @profile
+    else
+      render :edit
+    end
   end
 
   private
