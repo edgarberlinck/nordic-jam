@@ -1,9 +1,10 @@
  <div class="container">
    <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
      <%= form_with model: @profile do |form| %>
+
      <h2 class="title mt-4">Vocals</h2>
      <div class="mt-4 checkboxes">
-       <% Instrument.where("name LIKE ?", "%Vocal%").order(:name).each do |instrument| %>
+       <% @vocal_instruments.sort_by(&:name).each do |instrument| %>
        <div class="mt-4 mr-4">
          <label class="checkbox">
            <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
@@ -13,9 +14,57 @@
        <% end %>
      </div>
 
-     <h2 class="title mt-4">Instruments</h2>
+     <h2 class="title mt-4">String</h2>
      <div class="mt-4 checkboxes">
-       <% Instrument.where.not("name LIKE ?", "%Vocal%").order(:name).each do |instrument| %>
+       <% @string_instruments.sort_by(&:name).each do |instrument| %>
+       <div class="mt-4 mr-4">
+         <label class="checkbox">
+           <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
+           <%= instrument.name %>
+         </label>
+       </div>
+       <% end %>
+     </div>
+
+     <h2 class="title mt-4">Woodwind</h2>
+     <div class="mt-4 checkboxes">
+       <% @woodwind_instruments.sort_by(&:name).each do |instrument| %>
+       <div class="mt-4 mr-4">
+         <label class="checkbox">
+           <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
+           <%= instrument.name %>
+         </label>
+       </div>
+       <% end %>
+     </div>
+
+     <h2 class="title mt-4">Brass</h2>
+     <div class="mt-4 checkboxes">
+       <% @brass_instruments.sort_by(&:name).each do |instrument| %>
+       <div class="mt-4 mr-4">
+         <label class="checkbox">
+           <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
+           <%= instrument.name %>
+         </label>
+       </div>
+       <% end %>
+     </div>
+
+     <h2 class="title mt-4">Percussion</h2>
+     <div class="mt-4 checkboxes">
+       <% @percussion_instruments.sort_by(&:name).each do |instrument| %>
+       <div class="mt-4 mr-4">
+         <label class="checkbox">
+           <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>
+           <%= instrument.name %>
+         </label>
+       </div>
+       <% end %>
+     </div>
+
+     <h2 class="title mt-4">Keyboard</h2>
+     <div class="mt-4 checkboxes">
+       <% @keyboard_instruments.sort_by(&:name).each do |instrument| %>
        <div class="mt-4 mr-4">
          <label class="checkbox">
            <%= form.check_box :instrument_ids, { multiple: true }, instrument.id, nil %>

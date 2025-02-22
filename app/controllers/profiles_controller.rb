@@ -16,6 +16,9 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by(user: Current.user)
 
     if @profile.update(profile_params)
+      if params[:profile][:instrument_ids].present?
+        @profile.instruments = Instrument.find(params[:profile][:instrument_ids])
+      end
       redirect_to profile_path(@profile)
     else
       @instruments = Instrument.all
@@ -29,6 +32,9 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = Current.user
     if @profile.save
+      if params[:profile][:instrument_ids].present?
+        @profile.instruments = Instrument.find(params[:profile][:instrument_ids])
+      end
       redirect_to profile_path(@profile)
     else
       render :new
@@ -54,7 +60,10 @@ class ProfilesController < ApplicationController
       :country,
       :city,
       :bio,
-      :avatar
+      :avatar,
+      instrument_ids: [],
+      style_ids: [],
+      influence_ids: []
     )
   end
 end

@@ -2,35 +2,70 @@
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
-[
-  # Singing
-  "Vocal", "Vocal (Lead)", "Vocal (Backing)", "Vocal Percussion",
-  # String Instruments
-  "Violin", "Viola", "Cello", "Double Bass", "Guitar", "Acoustic Guitar", "Electric Guitar",
-  "Bass Guitar", "Harp", "Banjo", "Mandolin", "Ukulele", "Sitar", "Bouzouki", "Lute",
-  "Balalaika", "Zither", "Lyre", "Charango", "Erhu", "Sarangi", "Veena", "Guzheng", "Koto", "Santoor",
 
+# Profile.all.each do |profile|
+#   profile.instruments.destroy_all
+# end
+# Instrument.destroy_all
+
+[  # Singing
+"Vocal", "Vocal (Lead)", "Vocal (Backing)", "Vocal Percussion" ]
+.each do |instrument|
+  Instrument.find_or_create_by(name: instrument, category: "vocal")
+end
+
+[
+   # String Instruments
+   "Violin", "Viola", "Cello", "Double Bass", "Guitar", "Acoustic Guitar", "Electric Guitar",
+   "Bass", "Harp", "Banjo", "Mandolin", "Ukulele", "Sitar", "Bouzouki", "Lute",
+   "Balalaika", "Zither", "Lyre", "Charango", "Erhu", "Sarangi", "Veena", "Guzheng", "Koto", "Santoor"
+]
+.each do |instrument|
+  Instrument.find_or_create_by(name: instrument, category: "string")
+end
+
+[
   # Woodwind Instruments
   "Flute", "Piccolo", "Recorder", "Clarinet", "Bass Clarinet", "Oboe", "English Horn", "Bassoon",
   "Contrabassoon", "Saxophone", "Bagpipes", "Duduk", "Pan Flute", "Ocarina", "Shakuhachi",
-  "Native American Flute", "Hulusi", "Bansuri",
+  "Native American Flute", "Hulusi", "Bansuri"
+]
+.each do |instrument|
+  Instrument.find_or_create_by(name: instrument, category: "woodwind")
+end
 
+[
   # Brass Instruments
   "Trumpet", "Cornet", "Flugelhorn", "French Horn", "Trombone", "Bass Trombone",
-  "Euphonium", "Tuba", "Sousaphone", "Bugle",
+  "Euphonium", "Tuba", "Sousaphone", "Bugle"
+]
+.each do |instrument|
+  Instrument.find_or_create_by(name: instrument, category: "brass")
+end
 
+[
   # Percussion Instruments (Pitched)
-  "Xylophone", "Marimba", "Vibraphone", "Glockenspiel", "Chimes", "Timpani",
+  "Xylophone", "Marimba", "Vibraphone", "Glockenspiel", "Chimes", "Timpani"
+]
+.each do |instrument|
+  Instrument.find_or_create_by(name: instrument, category: "percussion")
+end
 
+[
   # Percussion Instruments (Unpitched)
   "Drums", "Snare Drum", "Bass Drum", "Tom-Toms", "Bongo Drums", "Congas", "Djembe", "Cajón", "Tabla",
-  "Tambourine", "Castanets", "Triangle", "Cymbals", "Gong", "Wood Block", "Claves", "Cowbell",
+  "Tambourine", "Castanets", "Triangle", "Cymbals", "Gong", "Wood Block", "Claves", "Cowbell"
+]
+.each do |instrument|
+  Instrument.find_or_create_by(name: instrument, category: "percussion")
+end
 
+[
   # Keyboard Instruments
   "Piano", "Grand Piano", "Upright Piano", "Electric Piano", "Harpsichord", "Clavichord",
   "Pipe Organ", "Electronic Keyboard", "Synthesizer", "Celesta"
 ].each do |instrument|
-  Instrument.find_or_create_by(name: instrument)
+  Instrument.find_or_create_by(name: instrument, category: "keyboard")
 end
 
 [
