@@ -27,11 +27,8 @@ class InstrumentsController < ApplicationController
     @profile = Profile.find(params[:profile_id])
     @profile.instruments = Instrument.find(params[:profile][:instrument_ids])
 
-    if @profile.save
-      redirect_to @profile
-    else
-      render :edit
-    end
+    redirect_to @profile
+
   end
 
   private
