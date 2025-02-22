@@ -28,7 +28,6 @@ class InstrumentsController < ApplicationController
     @profile.instruments = Instrument.find(params[:profile][:instrument_ids])
 
     redirect_to @profile
-
   end
 
   private

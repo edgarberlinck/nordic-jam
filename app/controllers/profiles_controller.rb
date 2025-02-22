@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find_by(user: Current.user)
-    
+
     if @profile.update(profile_params)
       if params[:profile][:instrument_ids].present?
         @profile.instruments = Instrument.find(params[:profile][:instrument_ids])
