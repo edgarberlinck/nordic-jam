@@ -11,7 +11,7 @@
         </div>
         <div>
           <p class="title"><%= @profile.full_name %> <%= link_to "✎", edit_profile_path(@profile), class: "subtitle" %></p>
-          <p class="subtitle"><%= @profile.country %>, <%= @profile.city %></p>
+          <p class="subtitle"><%= @profile.age %> years old, <%= @profile.gender %>, <%= @profile.country %>, <%= @profile.city %></p>
           <div class="tags are-medium">
             <% @profile.instruments.each do |instrument| %>
             <%= tag.div(instrument.name, class: "tag") %>

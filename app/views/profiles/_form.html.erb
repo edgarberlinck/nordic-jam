@@ -13,11 +13,25 @@
       <%= form.label :full_name %>
       <%= form.text_field :full_name, required: true, autofocus: true, autocomplete: "name", placeholder: "Enter your name", class: "input" %>
     </div>
-    <div class="mt-4">
-      <%= form.label :country %>
-      <br />
-      <div class="select">
-        <%= form.select :country, 
+    <div class="is-flex is-flex-direction-row" style="gap: 1rem;">
+      <div class="mt-4">
+        <%= form.label :date_of_birth %>
+        <%= form.date_field :date_of_birth, required: true, autocomplete: "date_of_birth", placeholder: "Enter your date of birth", class: "input" %>
+      </div>
+      <div class="mt-4">
+        <%= form.label :gender %>
+        <br />
+        <div class="select">
+          <%= form.select :gender, ["Male", "Female", "Other"], required: true, autocomplete: "gender", placeholder: "Select your gender", class: "select" %>
+        </div>
+      </div>
+    </div>
+    <div class="is-flex is-flex-direction-row" style="gap: 1rem;">
+      <div class="mt-4">
+        <%= form.label :country %>
+        <br />
+        <div class="select">
+          <%= form.select :country, 
             {},
             {},
             { data: { 
@@ -26,15 +40,16 @@
               "country-city-outlet": "#profile_city",
               "country-country-value": profile.country } }
         %>
+        </div>
       </div>
-    </div>
-    <div class="mt-4">
-      <%= form.label :city %>
-      <br />
-      <div class="select">
-        <%= form.select :city, {}, 
+      <div class="mt-4">
+        <%= form.label :city %>
+        <br />
+        <div class="select">
+          <%= form.select :city, {}, 
         {}, 
         { data: { controller: "city", "city-city-value": profile.city, "city-country-value": profile.country } } %>
+        </div>
       </div>
     </div>
     <div class="mt-4">
