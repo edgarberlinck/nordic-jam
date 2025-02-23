@@ -11,13 +11,13 @@
         </div>
         <div>
           <% if !@profile.nil? && @profile.id.present? %>
-          <p class="title"><%= @profile.full_name %> <%= link_to "✎", edit_profile_path(@profile), class: "subtitle" %></p>
+          <p class="title"><%= @profile.full_name %> <%= link_to "✎", edit_profile_path(@profile), class: "subtitle" if @is_owner %></p>
           <p class="subtitle"><%= @profile.age %> years old, <%= @profile.gender %>, <%= @profile.country %>, <%= @profile.city %></p>
           <div class="tags are-medium">
             <% @profile.instruments.each do |instrument| %>
             <%= tag.div(instrument.name, class: "tag") %>
             <% end %>
-            <%= link_to "+", profile_instruments_path(@profile), class: "button is-small is-secondary" %>
+            <%= link_to "+", profile_instruments_path(@profile), class: "button is-small is-secondary" if @is_owner %>
           </div>
           <% else %>
           <p class="title">Add your profile</p>
@@ -31,7 +31,7 @@
 <div class="container">
   <section class="section">
     <div class="content">
-      <h2>Styles <%= link_to "Edit styles", profile_styles_path(@profile), class: "button is-small" %></h2>
+      <h2>Styles <%= link_to "Edit styles", profile_styles_path(@profile), class: "button is-small" if @is_owner %></h2>
       <div class="tags">
         <% @profile.styles.each do |style| %>
         <%= tag.div(style.name, class: "tag") %>
@@ -42,7 +42,7 @@
 
   <section class="section">
     <div class="content">
-      <h2>Influences <%= link_to "Edit influences", profile_influences_path(@profile), class: "button is-small" %></h2>
+      <h2>Influences <%= link_to "Edit influences", profile_influences_path(@profile), class: "button is-small" if @is_owner %></h2>
       <div class="tags">
         <% @profile.influences.each do |influence| %>
         <%= tag.div(influence.name, class: "tag") %>

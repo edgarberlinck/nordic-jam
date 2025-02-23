@@ -30,7 +30,7 @@ class SearchController < ApplicationController
 
       @results = @results.distinct
     else
-      @results = Profile.all
+      @results = Profile.all.where("profiles.id <> ?", Current.user.id)
     end
   end
 

@@ -1,11 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  full_name: MyString
-  bio: MyText
-  date_of_birth: MyString
+  id: 1
+  full_name: User 1
+  bio: Bio 1
+  date_of_birth: 1990-01-01
+  user: one
+  country: Sweden
+  city: Stockholm
+  gender: Male
 
 two:
-  full_name: MyString
-  bio: MyText
-  date_of_birth: MyString
+  id: 2
+  full_name: User 2
+  bio: Bio 2
+  date_of_birth: 1990-01-02
+  user: two
+  country: Sweden
+  city: Stockholm
+  gender: Male

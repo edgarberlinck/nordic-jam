@@ -1,10 +1,13 @@
 class ProfilesController < ApplicationController
   def show
     user = Current.user
-    @profile = Profile.find_by(user: user)
-    if @profile.nil?
+    current_profile = Profile.find_by(user: user)
+    if current_profile.nil?
       redirect_to new_profile_path
     end
+
+    @is_owner = current_profile.present? && current_profile.id.present? && current_profile.id == params[:id].to_i
+    @profile = Profile.find_by(id: params[:id])
   end
 
   def new

@@ -1,12 +1,6 @@
 require "application_system_test_case"
 
 class ProfilesTest < ApplicationSystemTestCase
-  # test "visiting the index" do
-  #   visit profiles_url
-  #
-  #   assert_selector "h1", text: "Profile"
-  # end
-
   test "when we sign up, we are redirected to the profile creation page" do
     visit root_path
     click_on "Sign in"
@@ -45,6 +39,7 @@ class ProfilesTest < ApplicationSystemTestCase
   end
 
   test "adding a instrument to a profile" do
+    # Login with fixture user
     visit root_path
     click_on "Sign in"
     click_on "Don't have an account? Sign up"
@@ -64,10 +59,8 @@ class ProfilesTest < ApplicationSystemTestCase
     click_on "Update Profile"
 
     click_link("+", class: "button is-small is-secondary")
-
     check "Vocals"
     click_on "Save"
-
     assert_selector "div", class: "tag", text: "Vocal"
   end
 
