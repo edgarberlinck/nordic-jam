@@ -41,10 +41,9 @@
 </div>
 
 <div class="section">
-  <% Rails.logger.debug "In view, results count: #{@results.try(:count)}" %>
   <% if @results.present? %>
   <% @results.each do |result| %>
-  <div class="box">
+  <div class="box is-clickable" onclick="window.location.href='<%= profile_path(result) %>'">
     <h3 class="title is-4"><%= result.full_name %></h3>
     <p><%= "#{result.country}, #{result.city}" %></p>
     <div class="content">
