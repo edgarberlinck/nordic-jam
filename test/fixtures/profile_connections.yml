@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profile: one
+  profiles: one
+  accepted: false
+
+two:
+  profile: two
+  profiles: two
+  accepted: false

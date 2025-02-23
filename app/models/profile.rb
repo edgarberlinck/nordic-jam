@@ -12,7 +12,9 @@ class Profile < ApplicationRecord
   validates :country, presence: true
   validates :date_of_birth, presence: true
   has_rich_text :bio
-
+  has_many :profile_connections
+  has_many :connections, -> { where(accepted: true) }, class_name: "ProfileConnection", foreign_key: :profile_id, through: :profile_connections, source: :profile
+  has_many :pending_connections, -> { where(accepted: false) }, class_name: "ProfileConnection", foreign_key: :profile_id, through: :profile_connections, source: :profile
   # Convert string to date before saving
   before_save :parse_date_of_birth
 

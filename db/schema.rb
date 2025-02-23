@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_22_213340) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_23_175642) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -60,6 +60,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_22_213340) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
+  end
+
+  create_table "profile_connections", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "profiles_id", null: false
+    t.boolean "accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_profile_connections_on_profile_id"
+    t.index ["profiles_id"], name: "index_profile_connections_on_profiles_id"
   end
 
   create_table "profile_influences", force: :cascade do |t|
@@ -127,6 +137,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_22_213340) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "profile_connections", "profiles"
+  add_foreign_key "profile_connections", "profiles", column: "profiles_id"
   add_foreign_key "profile_influences", "influences"
   add_foreign_key "profile_influences", "profiles"
   add_foreign_key "profile_instruments", "instruments"

@@ -19,6 +19,10 @@
             <% end %>
             <%= link_to "+", profile_instruments_path(@profile), class: "button is-small is-secondary" if @is_owner %>
           </div>
+          <div class="is-flex is-flex-direction-row is-align-items-center">
+            <span class="body">Friends: <%= @profile.connections.size %></span>
+          </div>
+
           <% else %>
           <p class="title">Add your profile</p>
           <% end %>
