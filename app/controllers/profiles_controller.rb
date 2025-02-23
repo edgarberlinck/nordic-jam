@@ -2,6 +2,9 @@ class ProfilesController < ApplicationController
   def show
     user = Current.user
     @profile = Profile.find_by(user: user)
+    if @profile.nil?
+      redirect_to new_profile_path
+    end
   end
 
   def new

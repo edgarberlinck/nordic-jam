@@ -3,13 +3,14 @@
     <div class="container">
       <div class="is-flex is-flex-direction-row is-align-items-center">
         <div class="mr-5">
-          <% if  @profile.avatar && @profile.avatar.attached? %>
+          <% if !@profile.nil? && @profile.id.present? && @profile.avatar.attached? %>
           <%= image_tag @profile.avatar, class: "image profile-avatar" %>
           <% else %>
           <%= image_tag "default-avatar.png", class: "image profile-avatar" %>
           <% end %>
         </div>
         <div>
+          <% if !@profile.nil? && @profile.id.present? %>
           <p class="title"><%= @profile.full_name %> <%= link_to "✎", edit_profile_path(@profile), class: "subtitle" %></p>
           <p class="subtitle"><%= @profile.age %> years old, <%= @profile.gender %>, <%= @profile.country %>, <%= @profile.city %></p>
           <div class="tags are-medium">
@@ -18,15 +19,19 @@
             <% end %>
             <%= link_to "+", profile_instruments_path(@profile), class: "button is-small is-secondary" %>
           </div>
+          <% else %>
+          <p class="title">Add your profile</p>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </section>
+<% if !@profile.nil? && @profile.id.present? %>
 <div class="container">
   <section class="section">
     <div class="content">
-      <h2>Styles <%= link_to "Edit", profile_styles_path(@profile), class: "button is-small" %></h2>
+      <h2>Styles <%= link_to "Edit styles", profile_styles_path(@profile), class: "button is-small" %></h2>
       <div class="tags">
         <% @profile.styles.each do |style| %>
         <%= tag.div(style.name, class: "tag") %>
@@ -37,7 +42,7 @@
 
   <section class="section">
     <div class="content">
-      <h2>Influences <%= link_to "Edit", profile_influences_path(@profile), class: "button is-small" %></h2>
+      <h2>Influences <%= link_to "Edit influences", profile_influences_path(@profile), class: "button is-small" %></h2>
       <div class="tags">
         <% @profile.influences.each do |influence| %>
         <%= tag.div(influence.name, class: "tag") %>
@@ -52,4 +57,5 @@
       <%= @profile.bio %>
     </div>
   </section>
+  <% end %>
 </div>
