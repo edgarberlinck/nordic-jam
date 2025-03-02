@@ -42,17 +42,6 @@
 
   <section class="section">
     <div class="content">
-      <h2>Influences <%= link_to "Edit influences", profile_influences_path(@profile), class: "button is-small" if @is_owner %></h2>
-      <div class="tags">
-        <% @profile.influences.each do |influence| %>
-        <%= tag.div(influence.name, class: "tag") %>
-        <% end %>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="content">
       <h2>Bio</h2>
       <%= @profile.bio %>
     </div>

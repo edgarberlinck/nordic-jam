@@ -4,8 +4,11 @@ class Profile < ApplicationRecord
   has_many :instruments, through: :profile_instruments
   has_many :profile_styles
   has_many :styles, through: :profile_styles
-  has_many :profile_influences
-  has_many :influences, through: :profile_influences
+  ############################################################
+  # This entity is not used anymore, but we keep it here for reference
+  # has_many :profile_influences
+  # has_many :influences, through: :profile_influences
+  ############################################################
   has_one_attached :avatar
   validates :full_name, presence: true
   validates :city, presence: true
