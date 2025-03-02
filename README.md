@@ -1,4 +1,4 @@
-🎸 Nordic Jam
+# 🎸 Nordic Jam
 
 A platform to connect musicians across Scandinavia
 
@@ -6,64 +6,69 @@ Nordic Jam is a Ruby on Rails application designed to help musicians in Scandina
 
 This project is currently in its early development stage. Stay tuned for updates!
 
-🚀 Getting Started
+## 🚀 Getting Started
 
-1. Prerequisites
+### 1. Prerequisites
 
 Make sure you have the following installed:
 
-	•	Ruby: >= 3.0.0
-	•	Rails: >= 8.0
-	•	SQLite (or update the database configuration if using another database)
-	•	Bundler
+  - Ruby: >= 3.0.0
+  - Rails: >= 8.0
+  - SQLite (or update the database configuration if using another database)
+  - Bundler
 
-2. Installation
+### 2. Installation
 
-	1.	Clone the repository
+Clone the repository
 
-	git clone https://github.com/yourusername/nordic-jam.git
+```` shell
+git clone https://github.com/yourusername/nordic-jam.git
 
-	cd nordic-jam
+cd nordic-jam
+````
 
+#### 2.	Install dependencies
 
-	2.	Install dependencies
-
-	bundle install
-
-
-	3.	Set up the database
-
-	rails db:create db:migrate
+````shell
+bundle install
+````
 
 
-	4.	Start the server
+#### 3.	Set up the database
 
-	rails server
+````shell
+rails db:create db:migrate
+````
 
-The app will be available at http://localhost:3000
 
-🛠 Roadmap
+#### 4.	Start the server
+
+````shell
+rails server
+````
+
+The app will be available at `http://localhost:3000`
+
+## 🛠 Roadmap
 
 Nordic Jam is in its early stages, but here are some planned features:
 
-	•	🎶 User Profiles – Musicians can create profiles and showcase their skills.
-	•	📍 Location-Based Search – Find musicians nearby.
-	•	🎤 Jam Session Listings – Organize and join jam sessions.
-	•	📬 Messaging – Connect and communicate with other musicians.
+  - 🎶 User Profiles – Musicians can create profiles and showcase their skills.
+  - 📍 Location-Based Search – Find musicians nearby.
+  - 🎤 Jam Session Listings – Organize and join jam sessions.
+  - 📬 Messaging – Connect and communicate with other musicians.
 
-Stay tuned for updates!
+**Stay tuned for updates!**
 
-📝 Contributing
+## 📝 Contributing
 
-This is an open-source project, and contributions are welcome!
+Before contributing, please keep in mind that we only accept pull requests (PRs) that address an existing issue in our repository.
 
-	1.	Fork the project
-	2.	Create a new branch (git checkout -b feature-name)
-	3.	Commit your changes (git commit -m "Add some feature")
-	4.	Push to your branch (git push origin feature-name)
-	5.	Open a Pull Request
+If you’d like to suggest a new feature or improvement, please create an issue first and wait for approval before opening a PR. This helps us maintain project focus and ensures that contributions align with our roadmap.
 
-📜 License
+Thank you for helping us improve this project! 🎉
+
+## 📜 License
 
 This project is licensed under the MIT License – see the LICENSE file for details.
 
