@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   resources :profiles do
     resources :instruments, only: %i[index show update]
-    resources :influences, only: %i[index show]
+    ############################################################
+    # This entity is not used anymore, but we keep it here for reference
+    # resources :influences, only: %i[index show]
+    ############################################################
     get "styles", to: "musical_styles#index"
   end
 
