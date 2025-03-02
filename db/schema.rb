@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_22_213340) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_02_151019) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -62,13 +62,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_22_213340) do
     t.string "category"
   end
 
-  create_table "profile_influences", force: :cascade do |t|
+  create_table "profile_created_jams", force: :cascade do |t|
     t.integer "profile_id", null: false
-    t.integer "influence_id", null: false
+    t.string "description"
+    t.string "address"
+    t.string "country"
+    t.string "city"
+    t.integer "styles_id", null: false
+    t.integer "instruments_id", null: false
+    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["influence_id"], name: "index_profile_influences_on_influence_id"
-    t.index ["profile_id"], name: "index_profile_influences_on_profile_id"
+    t.index ["instruments_id"], name: "index_profile_created_jams_on_instruments_id"
+    t.index ["profile_id"], name: "index_profile_created_jams_on_profile_id"
+    t.index ["styles_id"], name: "index_profile_created_jams_on_styles_id"
   end
 
   create_table "profile_instruments", force: :cascade do |t|
@@ -127,8 +134,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_22_213340) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "profile_influences", "influences"
-  add_foreign_key "profile_influences", "profiles"
+  add_foreign_key "profile_created_jams", "instruments", column: "instruments_id"
+  add_foreign_key "profile_created_jams", "profiles"
+  add_foreign_key "profile_created_jams", "styles", column: "styles_id"
   add_foreign_key "profile_instruments", "instruments"
   add_foreign_key "profile_instruments", "profiles"
   add_foreign_key "profile_styles", "profiles"
