@@ -16,14 +16,21 @@ class JamsController < ApplicationController
   end
 
   def create
+    profile = Profile.find_by(user: Current.user)
     @jam = ProfileCreatedJam.new(jam_params)
-    @jam.save
-    redirect_to @jam
+    @jam.profile = profile
+
+    Rails.logger.info("jam: #{@jam.inspect}")
+    if @jam.save
+      redirect_to jam_path(@jam)
+    else
+      render :new
+    end
   end
 
   private
 
   def jam_params
-    params.require(:profile_created_jam).permit(:description, :address, :country, :city, :date)
+    params.require(:profile_created_jam).permit(:title, :description, :address, :country, :city)
   end
 end
