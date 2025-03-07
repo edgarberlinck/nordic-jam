@@ -11,6 +11,14 @@ Rails.application.routes.draw do
     get "styles", to: "musical_styles#index"
   end
 
+  get "jams" => "jams#index", as: :jams
+  get "jams/new" => "jams#new", as: :new_jam
+  get "jams/:id" => "jams#show", as: :jam
+  post "jams" => "jams#create", as: :create_jam
+  get "jams/:id/edit" => "jams#edit", as: :edit_jam
+  patch "jams/:id" => "jams#update", as: :update_jam
+  delete "jams/:id" => "jams#destroy", as: :destroy_jam
+
   get "search" => "search#index"
   get "search/results" => "search#index"
 
