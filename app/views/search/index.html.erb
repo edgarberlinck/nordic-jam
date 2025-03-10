@@ -1,39 +1,40 @@
-<div class="section">
+<div class="container px-2 py-8">
   <%= form_tag search_results_path(search_params: @search_params), method: :get do %>
-  <div class="columns">
-    <div class="column">
-      <div class="field">
-        <%= label_tag :country, "Country" %>
-        <%= text_field_tag :country, params[:country], class: "input"  %>
+  <div class="grid grid-cols-1 md-grid-cols-2 bg-indigo-50 rounded-2xl px-5 py-3 gap-6">
+    <div>
+      <div>
+        <%= label_tag :country, "Country", class: "font-bold font-sans"  %>
+        <%= text_field_tag :country, params[:country], class: "input mt-2"  %>
       </div>
     </div>
-    <div class="column">
-      <div class="field">
-        <%= label_tag :city, "City" %>
-        <%= text_field_tag :city, params[:city], class: "input" %>
+    <div>
+      <div>
+        <%= label_tag :city, "City", class: "font-bold font-sans"  %>
+        <%= text_field_tag :city, params[:city], class: "input mt-2" %>
       </div>
     </div>
-    <div class="column">
-      <div class="field">
-        <%= label_tag :instrument, "Instrument" %>
+    <div>
+      <div>
+        <%= label_tag :instrument, "Instrument", class: "font-bold font-sans"  %>
         <br />
-        <div class="select">
+        <div class="select mt-2">
           <%= select_tag :instrument, options_from_collection_for_select(@instruments, "id", "name", {include_blank: "All", selected: params[:instrument]}) %>
         </div>
       </div>
     </div>
-    <div class="column">
-      <div class="field">
-        <%= label_tag :style, "Style" %>
+    <div>
+      <div>
+        <%= label_tag :style, "Style", class: "font-bold font-sans"  %>
         <br />
-        <div class="select">
+        <div class="select mt-2">
           <%= select_tag :style, options_from_collection_for_select(@styles, "id", "name", {include_blank: "All", selected: params[:style]}) %>
         </div>
       </div>
     </div>
-    <div class="column is-flex is-align-items-end">
-      <div class="field">
-        <%= submit_tag "Search", class: "button is-primary" %>
+    
+    <div class="flex items-center mt-5">
+      <div>
+        <%= submit_tag "Search", class: "button is-primary cursor-pointer" %>
       </div>
     </div>
   </div>
@@ -53,6 +54,7 @@
   </div>
   <% end %>
   <% else %>
-  <p class="has-text-centered">No profiles found matching your criteria</p>
+  <p class="text-center">No profiles found matching your criteria</p>
   <% end %>
 </div>
+
