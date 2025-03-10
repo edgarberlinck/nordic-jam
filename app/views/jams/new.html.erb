@@ -1,25 +1,30 @@
 <div class="container">
   <%= tag.div(flash[:alert], class: "notification is-danger") if flash[:alert] %>
-  <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+  <div class="flex flex-col items-center justify-center">
     <h2 class="title mt-4">Create a Jam</h2>
     <small>
       Invite users to jam with you!
     </small>
 
     <%= form_with model: @jam, url: jams_path do |form| %>
-    <div class="mt-4">
+    <div class="mt-4 font-semibold">
       <%= form.label :title %>
-      <%= form.text_field :title, required: true, autofocus: true, autocomplete: "title", placeholder: "Enter a title for your jam", class: "input" %>
-    </div>
-    <div class="is-flex is-flex-direction-row" style="gap: 1rem;">
-      <div class="mt-4">
-        <%= form.label :address %>
-        <%= form.text_field :address, required: true, autofocus: true, autocomplete: "address", placeholder: "Enter an address for your jam", class: "input" %>
+      <div class="mt-2">
+        <%= form.text_field :title, required: true, autofocus: true, autocomplete: "title", placeholder: "Enter a title for your jam", class: "input" %>
       </div>
-      <div class="mt-4">
+      
+    </div>
+    <div class="flex flex-col gap-1" >
+      <div class="mt-4 font-semibold ">
+        <%= form.label :address  %>
+        <div class="mt-2"> 
+          <%= form.text_field :address, required: true, autofocus: true, autocomplete: "address", placeholder: "Enter an address for your jam", class: "input" %>
+        </div>
+      </div>
+      <div class="mt-4 font-semibold ">
         <%= form.label :country %>
         <br />
-        <div class="select">
+        <div class="select mt-2">
           <%= form.select :country, 
             {},
             {},
@@ -31,19 +36,21 @@
         %>
         </div>
       </div>
-      <div class="mt-4">
+      <div class="mt-4 font-semibold ">
         <%= form.label :city %>
         <br />
-        <div class="select">
+        <div class="select mt-2">
           <%= form.select :city, {}, 
         {}, 
         { data: { controller: "city", "city-city-value": @jam.city, "city-country-value": @jam.country } } %>
         </div>
       </div>
     </div>
-    <div class="mt-4">
+    <div class="mt-4 font-semibold ">
       <%= form.label :description %>
-      <%= form.rich_text_area :description, required: true, placeholder: "Enter a description for your jam", class: "textarea" %>
+      <div class="mt-2"> 
+        <%= form.rich_text_area :description, required: true, placeholder: "Enter a description for your jam", class: "textarea" %>
+      </div>
     </div>
     <div class="mt-4">
       <%= form.submit "Create Jam", class: "button is-primary" %>
