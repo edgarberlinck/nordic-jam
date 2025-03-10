@@ -39,9 +39,13 @@ bundle install
 ````shell
 rails db:create db:migrate
 ````
+### 4. Apply the seeds
 
+````shell
+rails db:seed
+````
 
-#### 4.	Start the server
+#### 5.	Start the server
 
 ````shell
 rails server
