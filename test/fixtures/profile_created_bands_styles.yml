@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  profileCreatedBand: one
-  style: one
+# one:
+#   profileCreatedBand: one
+#   style: one
 
-two:
-  profileCreatedBand: two
-  style: two
+# two:
+#   profileCreatedBand: two
+#   style: two
