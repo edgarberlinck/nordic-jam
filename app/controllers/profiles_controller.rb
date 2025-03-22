@@ -55,7 +55,7 @@ class ProfilesController < ApplicationController
       redirect_to new_profile_path
     end
   end
-
+  
   private
 
   def profile_params

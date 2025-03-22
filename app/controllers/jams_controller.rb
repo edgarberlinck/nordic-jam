@@ -1,4 +1,5 @@
 class JamsController < ApplicationController
+  allow_unauthenticated_access only: %i[ index show ]
   def index
     @jams = ProfileCreatedJam.all
   end
