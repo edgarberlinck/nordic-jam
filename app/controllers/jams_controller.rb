@@ -4,6 +4,7 @@ class JamsController < ApplicationController
   end
 
   def new
+    @profile = Profile.find_by(user: Current.user)
     @jam = ProfileCreatedJam.new
   end
 

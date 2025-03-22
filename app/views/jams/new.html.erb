@@ -12,49 +12,50 @@
       <div class="mt-2">
         <%= form.text_field :title, required: true, autofocus: true, autocomplete: "title", placeholder: "Enter a title for your jam", class: "input" %>
       </div>
-      
+
     </div>
-    <div class="flex flex-col gap-1" >
+    <div class="flex flex-col gap-1">
       <div class="mt-4 font-semibold ">
         <%= form.label :address  %>
-        <div class="mt-2"> 
+        <div class="mt-2">
           <%= form.text_field :address, required: true, autofocus: true, autocomplete: "address", placeholder: "Enter an address for your jam", class: "input" %>
         </div>
       </div>
-      <div class="mt-4 font-semibold ">
-        <%= form.label :country %>
-        <br />
-        <div class="select mt-2">
-          <%= form.select :country, 
+      <div class="flex flex-row gap-2">
+        <div class="mt-4 font-semibold ">
+          <%= form.label :country %>
+          <br />
+          <div class="select mt-2">
+            <%= form.select :country, 
             {},
             {},
             { data: { 
               controller: "country", 
               action: "change->country#onCountryChange", 
               "country-city-outlet": "#profile_created_jam_city",
-              "country-country-value": @jam.country } }
+              "country-country-value": @profile.country } }
         %>
+          </div>
+        </div>
+        <div class="mt-4 font-semibold ">
+          <%= form.label :city %>
+          <br />
+          <div class="select mt-2">
+            <%= form.select :city, {}, 
+        {}, 
+        { data: { controller: "city", "city-city-value": @profile.city, "city-country-value": @profile.country } } %>
+          </div>
         </div>
       </div>
       <div class="mt-4 font-semibold ">
-        <%= form.label :city %>
-        <br />
-        <div class="select mt-2">
-          <%= form.select :city, {}, 
-        {}, 
-        { data: { controller: "city", "city-city-value": @jam.city, "city-country-value": @jam.country } } %>
+        <%= form.label :description %>
+        <div class="mt-2">
+          <%= form.rich_text_area :description, required: true, placeholder: "Enter a description for your jam", class: "textarea" %>
         </div>
       </div>
-    </div>
-    <div class="mt-4 font-semibold ">
-      <%= form.label :description %>
-      <div class="mt-2"> 
-        <%= form.rich_text_area :description, required: true, placeholder: "Enter a description for your jam", class: "textarea" %>
+      <div class="mt-4">
+        <%= form.submit "Create Jam", class: "button is-primary" %>
       </div>
+      <% end %>
     </div>
-    <div class="mt-4">
-      <%= form.submit "Create Jam", class: "button is-primary" %>
-    </div>
-    <% end %>
   </div>
-</div>
