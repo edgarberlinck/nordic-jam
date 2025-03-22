@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_07_213000) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_22_200958) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -60,6 +60,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_213000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
+  end
+
+  create_table "profile_created_bands", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.string "title"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_profile_created_bands_on_profile_id"
+  end
+
+  create_table "profile_created_bands_styles", force: :cascade do |t|
+    t.integer "profileCreatedBand_id", null: false
+    t.integer "style_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profileCreatedBand_id"], name: "index_profile_created_bands_styles_on_profileCreatedBand_id"
+    t.index ["style_id"], name: "index_profile_created_bands_styles_on_style_id"
   end
 
   create_table "profile_created_jams", force: :cascade do |t|
@@ -130,6 +148,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_213000) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "profile_created_bands", "profiles"
+  add_foreign_key "profile_created_bands_styles", "profileCreatedBands"
+  add_foreign_key "profile_created_bands_styles", "styles"
   add_foreign_key "profile_created_jams", "profiles"
   add_foreign_key "profile_instruments", "instruments"
   add_foreign_key "profile_instruments", "profiles"

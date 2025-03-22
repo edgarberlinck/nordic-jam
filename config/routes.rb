@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     get "styles", to: "musical_styles#index"
   end
 
+  ############################################################
+  # Jams
+  ############################################################
   get "jams" => "jams#index", as: :jams
   get "jams/new" => "jams#new", as: :new_jam
   get "jams/:id" => "jams#show", as: :jam
@@ -19,9 +22,22 @@ Rails.application.routes.draw do
   patch "jams/:id" => "jams#update", as: :update_jam
   delete "jams/:id" => "jams#destroy", as: :destroy_jam
 
+  ############################################################
+  # Bands
+  ############################################################
+  get "bands" => "bands#index", as: :bands
+  get "bands/new" => "bands#new", as: :new_band
+  get "bands/:id" => "bands#show", as: :band
+  post "bands" => "bands#create", as: :create_band
+  get "bands/:id/edit" => "bands#edit", as: :edit_band
+  patch "bands/:id" => "bands#update", as: :update_band
+  delete "bands/:id" => "bands#destroy", as: :destroy_band
+
+  ############################################################
+  # Search
+  ############################################################
   get "search" => "search#index"
   get "search/results" => "search#index"
-
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
