@@ -26,8 +26,8 @@ Rails.application.routes.draw do
   # Bands
   ############################################################  
   get "bands" => "bands#index", as: :bands
-  get "bands/:id" => "bands#show", as: :band
   get "bands/new" => "bands#new", as: :new_band
+  get "bands/:id" => "bands#show", as: :band
   post "bands" => "bands#create", as: :create_band
   get "bands/:id/edit" => "bands#edit", as: :edit_band
   patch "bands/:id" => "bands#update", as: :update_band

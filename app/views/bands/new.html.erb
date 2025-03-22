@@ -1,0 +1,27 @@
+<div class="container">
+  <%= tag.div(flash[:alert], class: "notification is-danger") if flash[:alert] %>
+  <div class="flex flex-col items-center justify-center">
+    <h2 class="title mt-4">Create a Band</h2>
+    <small>
+      Create a band to start playing with other musicians!
+    </small>
+
+    <%= form_with model: @band, url: bands_path do |form| %>
+    <div class="mt-4 font-semibold">
+      <%= form.label :title %>
+      <div class="mt-2">
+        <%= form.text_field :title, required: true, autocomplete: "name", placeholder: "A short description of what your band is about", class: "input" %>
+      </div>
+    </div>
+    <div class="mt-4">
+      <%= form.label :about %>
+      <div class="mt-2">
+        <%= form.rich_text_area :about, required: true, autocomplete: "description", placeholder: "A longer description of what are you looking for", class: "input" %>
+      </div>
+    </div>
+    <div class="mt-4">
+      <%= form.submit "Create Band", class: "button is-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>
