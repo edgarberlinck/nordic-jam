@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   ############################################################
   # Jams
-  ############################################################    
+  ############################################################
   get "jams" => "jams#index", as: :jams
   get "jams/new" => "jams#new", as: :new_jam
   get "jams/:id" => "jams#show", as: :jam
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   ############################################################
   # Bands
-  ############################################################  
+  ############################################################
   get "bands" => "bands#index", as: :bands
   get "bands/new" => "bands#new", as: :new_band
   get "bands/:id" => "bands#show", as: :band
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   ############################################################
   # Search
-  ############################################################  
+  ############################################################
   get "search" => "search#index"
   get "search/results" => "search#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
